@@ -1,0 +1,3117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title></title>
+<!-- 2017-04-18 Tue 15:25 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Kaushal.Modi">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<style type="text/css">
+/* Reduce the bottom margin; default is too big. */
+body {
+    margin-bottom : 35px;
+}
+footer {
+    height        : 35px;
+    text-align    : center;
+    /* vertical alignment trick: http://stackoverflow.com/a/16205949/1219634 */
+    line-height   : 35px;
+    font-style    : italic;
+}
+/* Remove the padding from in-between the div elements
+   in the footer. */
+footer > div {
+    padding: 0px;
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title"></h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This is not so much an instructional manual, but rather notes, tables,
+and examples for Python syntax. It was created by the author as an
+additional resource during training, meant to be distributed as a
+physical notebook. Participants (who favor the physical characteristics
+of dead tree material) could add their own notes, thoughts, and have a
+valuable reference of curated examples.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Running Python</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Installation</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+To check if Python is installed, run the following from a terminal:
+</p>
+
+<pre class="example">
+$ python3 --version
+</pre>
+
+<p>
+Otherwise, install Python 3 from the website  [1].
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Invoking Python</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The Python executable will behave differently depending on the command
+line options you give it:
+</p>
+
+<ul class="org-ul">
+<li>Start the Python REPL:
+
+<pre class="example">
+$ python3
+</pre>
+</li>
+
+<li>Execute the <code>file.py</code> file:
+
+<pre class="example">
+$ python3 file.py
+</pre>
+</li>
+
+<li>Execute the <code>file.py</code> file, and drop into REPL with namespace of
+<code>file.py</code>:
+
+<pre class="example">
+$ python3 -i file.py
+</pre>
+</li>
+
+<li>Execute the <code>json/tool.py</code> module:
+
+<pre class="example">
+$ python3 -m json.tool
+</pre>
+</li>
+
+<li>Execute <code>"print('hi')"</code> :
+
+<pre class="example">
+$ python3 -c "print('hi')"
+</pre>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> REPL</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Use the <code>help</code> function to read the documentation for a
+module/class/function. As a standalone invocation, you enter the help
+system and can explore various topics.
+</li>
+<li>Use the <code>dir</code> function to list contents of the namespace, or
+attributes of an object if you pass one in
+</li>
+</ul>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+The majority of code in this book is written as if it were executed in
+a REPL. If you are typing it in, ignore the primary and secondary
+prompts (<code>&gt;&gt;&gt;</code> and <code>...</code>).
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> The Zen of Python</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Run the following in an interpreter to get an Easter egg that describes
+some of the ethos behind Python. This is also codified in PEP 20:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the
+rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation
+to guess.
+There should be one --and preferably only one--
+obvious way to do it.
+Although that way may not be obvious at first
+unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a
+bad idea.
+If the implementation is easy to explain, it may
+be a good idea.
+Namespaces are one honking great idea -- let's
+do more of those!
+</pre>
+
+<p>
+These might just seem like silly one liners, but there is a lot of
+wisdom packed in here. It is good for Python programmers to review these
+every once in a while and see if these hold true for their code. (Or to
+justify their code reviews)
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Built-in Types</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Variables</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Python variables are like cattle tags, they point to objects (which can
+be classes, instances, modules, or functions), but variables are not the
+objects. You can reuse variable names for different object types (though
+you probably shouldn&rsquo;t):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; a = 400     # a points to an integer
+&gt;&gt;&gt; a = '400'   # a now points to a string
+</pre>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+The <code>#</code> character denotes the start of a comment. There are no
+multi-line comments, though most editors with Python support can
+comment out a region.
+</p>
+</blockquote>
+
+<p>
+The figure that follows illustrates how everything is an object in
+Python and variables just point to them.
+</p>
+
+<p>
+<img src="./img/py/rebind.png" class="img-responsive" alt="rebind.png">
+\clearpage
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Numbers</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Python includes three types of numeric literals: <i>integers</i>, <i>floats</i>,
+and <i>complex numbers</i>. Python 3.6 adds the ability to use underscores to
+improve readability (PEP 515).
+</p>
+
+<p>
+There are many built-in functions for manipulating numbers ie. <code>abs</code>,
+<code>min</code>, <code>max</code>, <code>ceil</code>. Also see the <code>math</code>, <code>random</code>, and <code>statistics</code>
+modules in the standard library.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Strings</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Python 3 strings hold unicode data. Python has a few ways to represent
+strings. There is also a bytes type (PEP 3137):
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Lists</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Lists are ordered mutable sequences:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; people = ['Paul', 'John', 'George']
+&gt;&gt;&gt; people.append('Ringo')
+</pre>
+
+<p>
+The <code>in</code> operator is useful for checking membership on sequences:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; 'Yoko' in people
+False
+</pre>
+
+<p>
+If we need the index number during iteration, the <code>enumerate</code> function
+gives us a tuple of index, item pairs:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; for i, name in enumerate(people, 1):
+...     print('{} - {}'.format(i, name))
+1 - Paul
+2 - John
+3 - George
+4 - Ringo
+</pre>
+
+<p>
+We can do index operations on most sequences:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; people[0]
+'Paul'
+&gt;&gt;&gt; people[-1]  # len(people) - 1
+'Ringo'
+</pre>
+
+<p>
+We can also do <i>slicing</i> operations on most sequences:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; people[1:2]
+['John']
+&gt;&gt;&gt; people[:1]   # Implicit start at 0
+['Paul']
+&gt;&gt;&gt; people[1:]   # Implicit end at len(people)
+['John', 'George', 'Ringo']
+&gt;&gt;&gt; people[::2]  # Take every other item
+['Paul', 'George']
+&gt;&gt;&gt; people[::-1] # Reverse sequence
+['Ringo', 'George', 'John', 'Paul']
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Dictionaries</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+Dictionaries are mutable mappings of keys to values. Keys must be
+hashable, but values can be any object:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; instruments = {'Paul': 'Bass',
+...                'John': 'Guitar'}
+
+&gt;&gt;&gt; instruments['George'] = 'Guitar'
+&gt;&gt;&gt; 'Ringo' in instruments
+False
+
+&gt;&gt;&gt; for name in instruments:
+...     print('{} - {}'.format(name,
+...           instruments[name]))
+Paul - Bass
+John - Guitar
+George - Guitar
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Tuples</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+Tuples are immutable sequences. Typically they are used to store
+<i>record</i> type data:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; member = ('Paul', 'Bass', 1942)
+&gt;&gt;&gt; member2 = ('Ringo', 'Drums', 1940)
+</pre>
+
+<p>
+Note that parentheses aren&rsquo;t usually required:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; row = 1, 'Fred'     # 2 item tuple
+&gt;&gt;&gt; row2 = (2, 'Bob')   # 2 item tuple
+&gt;&gt;&gt; row3 = ('Bill')     # String!
+&gt;&gt;&gt; row4 = ('Bill',)    # 1 item tuple
+&gt;&gt;&gt; row5 = 'Bill',      # 1 item tuple
+&gt;&gt;&gt; row6 = ()           # Empty tuple
+</pre>
+
+<p>
+Named tuples can be used in place of normal tuples and allow context (or
+names) to be added to positional members. The syntax for creating them
+is a little different because we are dynamically creating a class first
+(hence the capitalized variable):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; from collections import namedtuple
+&gt;&gt;&gt; Member = namedtuple('Member',
+...     'name, instrument, birth_year')
+&gt;&gt;&gt; member3 = Member('George', 'Guitar', 1943)
+</pre>
+
+<p>
+We can access members by position or name (name allows us to be more
+explicit):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; member3[0]
+'George'
+
+&gt;&gt;&gt; member3.name
+'George'
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Sets</h3>
+<div class="outline-text-3" id="text-4-7">
+<p>
+A set is a mutable unordered collection that cannot contain duplicates.
+Sets are used to remove duplicates and test for membership:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; digits = [0, 1, 1, 2, 3, 4, 5, 6,
+...     7, 8, 9]
+&gt;&gt;&gt; digit_set = set(digits)   # remove extra 1
+
+&gt;&gt;&gt; 9 in digit_set
+True
+</pre>
+
+<p>
+Sets are useful because they provide <i>set operations</i>, such as union
+(<code>|</code>), intersection (<code>&amp;</code>), difference (<code>-</code>), and xor (<code>^</code>):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; odd = {1, 3, 5, 7, 9}
+&gt;&gt;&gt; prime = set([2, 3, 5, 7])
+&gt;&gt;&gt; even = digit_set - odd
+&gt;&gt;&gt; even
+{0, 2, 4, 6, 8}
+
+&gt;&gt;&gt; prime &amp; even  # in intersection
+{2}
+
+&gt;&gt;&gt; odd | even    # in both
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+&gt;&gt;&gt; even ^ prime  # not in both
+{0, 3, 4, 5, 6, 7, 8}
+</pre>
+
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+There is no literal syntax for an empty set. You need to use:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; empty = set()
+</pre>
+</blockquote>
+
+<p>
+\clearpage
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Built in Functions</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+In the default namespace you have access to various callables:
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Unicode</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Python 3 represents strings as Unicode. We can <i>encode</i> strings to a
+series of bytes such as UTF-8. If we have bytes, we can <i>decode</i> them to
+a Unicode string:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; x_sq = 'x²'
+&gt;&gt;&gt; x_sq.encode('utf-8')
+b'x\xc2\xb2'
+
+&gt;&gt;&gt; utf8_bytes = b'x\xc2\xb2'
+&gt;&gt;&gt; utf8_bytes.decode('utf-8')
+'x²'
+</pre>
+
+<p>
+If you have the unicode glyph, you can use that directly. Alternatively,
+you can enter a code point using <code>\u</code> followed by the 16-bit hex value
+xxxx. For larger code points, use <code>\U</code> followed by xxxxxxxx. If you have
+the Unicode name (obtained by consulting tables at unicode.org), you can
+use the <code>\N</code> syntax. The following are equivalent:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; result = 'x²'
+&gt;&gt;&gt; result = 'x\u00b2'
+&gt;&gt;&gt; result = 'x\N{SUPERSCRIPT TWO}'
+</pre>
+
+<p>
+representation. In this case, we convert to UTF-8. There are other byte
+encodings for this string. If we have a UTF-8 byte string, we can
+<i>decode</i> it into a Unicode string. Note that we should be explicit about
+the decoding as there are potentially other encodings that we could
+decode to that might give the user erroneous data, or <i>mojibake</i>.
+</p>
+
+
+<figure>
+<p><img src="./img/py/uniencode.png" class="img-responsive" alt="uniencode.png">
+</p>
+</figure>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> String Formatting</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Most modern Python code uses the <code>.format</code> method (PEP 3101) to create
+strings from other parts. The format method uses <code>{}</code> as a placeholder.
+</p>
+
+<p>
+Inside of the placeholder we can provide different specifiers:
+</p>
+
+<ul class="org-ul">
+<li><code>{0}</code> - reference first positional argument
+</li>
+<li><code>{}</code> - reference implicit positional argument
+</li>
+<li><code>{result}</code> - reference keyword argument
+</li>
+<li><code>{bike.tire}</code> - reference attribute of argument
+</li>
+<li><code>{names[0]}</code> - reference first element of argument
+</li>
+</ul>
+
+<pre class="example">
+&gt;&gt;&gt; person = {'name': 'Paul',
+...     'instrument': 'Bass'}
+&gt;&gt;&gt; inst = person['instrument']
+
+
+&gt;&gt;&gt; print("Name: {} plays: {}".format(
+...     person['name'], inst))
+Name: Paul plays: Bass
+</pre>
+
+<p>
+or:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; print("Name: {name} "
+...       "plays: {inst}".format(
+...       name=person['name'], inst=inst))
+Name: Paul plays: Bass
+</pre>
+
+<p>
+You can also use <i>f-strings</i> in Python 3.6 (see PEP 498):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; print(f'Name: {person["name"]} plays: {inst}')
+Name: Paul plays: Bass
+</pre>
+
+<p>
+F-strings inspect variables that are available and allow you to inline
+methods, or attributes from those variables.
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Conversion Flags</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+You can provide a <i>conversion flag</i> inside the placeholder.
+</p>
+
+<ul class="org-ul">
+<li><code>!s</code> - Call <code>str()</code> on argument
+</li>
+<li><code>!r</code> - Call <code>repr()</code> on argument
+</li>
+<li><code>!a</code> - Call <code>ascii()</code> on argument
+</li>
+</ul>
+
+<pre class="example">
+&gt;&gt;&gt; class Cat:
+...     def __init__(self, name):
+...         self.name = name
+...     def __format__(self, data):
+...         return "Format"
+...     def __str__(self):
+...         return "Str"
+...     def __repr__(self):
+...         return "Repr"
+
+&gt;&gt;&gt; cat = Cat("Fred")
+&gt;&gt;&gt; print("{} {!s} {!a} {!r}".format(cat, cat, cat,
+...       cat))
+Format Str Repr Repr
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Format Specification</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+You can provide a format specification following a colon. The grammar
+for format specification is as follows:
+</p>
+
+<pre class="example">
+[[fill]align][sign][#][0][width][grouping_option]
+[.precision][type]
+</pre>
+
+<p>
+The following table lists the field meanings.
+</p>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="text-left">Field</th>
+<th scope="col" class="text-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-left">fill</td>
+<td class="text-left">Fills in space with <code>align</code></td>
+</tr>
+
+<tr>
+<td class="text-left">align</td>
+<td class="text-left"><code>&lt;</code>-left align,</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left"><code>&gt;</code>-right align,</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left"><code>^</code>-center align,</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left"><code>=</code>-put padding after sign</td>
+</tr>
+
+<tr>
+<td class="text-left">sign</td>
+<td class="text-left"><code>+</code>-for all number,</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left"><code>-</code>-only negative,</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left"><i>space</i>-leading space for</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">positive, sign on negative</td>
+</tr>
+
+<tr>
+<td class="text-left">#</td>
+<td class="text-left">Prefix integers. <code>Ob</code>-binary,</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left"><code>0o</code>-octal, <code>0x</code>-hex</td>
+</tr>
+
+<tr>
+<td class="text-left">0</td>
+<td class="text-left">Enable zero padding</td>
+</tr>
+
+<tr>
+<td class="text-left">width</td>
+<td class="text-left">Minimum field width</td>
+</tr>
+
+<tr>
+<td class="text-left">grouping\_option</td>
+<td class="text-left"><code>,</code>-Use comma for thousands</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">separator, <code>_</code>-Use underscore</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">for thousands separator</td>
+</tr>
+
+<tr>
+<td class="text-left">.precision</td>
+<td class="text-left">Digits after period (floats).</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">Max string length (non-numerics)</td>
+</tr>
+
+<tr>
+<td class="text-left">type</td>
+<td class="text-left"><code>s</code>-string format (default)</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">see Integer and Float charts</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The tables below lists the various options we have for formatting
+integer and floating point numbers.
+</p>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="text-left">Integer Types</th>
+<th scope="col" class="text-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-left"><code>b</code></td>
+<td class="text-left">binary</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>c</code></td>
+<td class="text-left">character - convert to unicode</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">character</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>d</code></td>
+<td class="text-left">decimal (default)</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>n</code></td>
+<td class="text-left">decimal with locale specific</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">separators</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>o</code></td>
+<td class="text-left">octal</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>x</code></td>
+<td class="text-left">hex (lower-case)</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>X</code></td>
+<td class="text-left">hex (upper-case)</td>
+</tr>
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="text-left">Float Types</th>
+<th scope="col" class="text-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-left"><code>e=/=E</code></td>
+<td class="text-left">Exponent. Lower/upper-case e</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>f</code></td>
+<td class="text-left">Fixed point</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>g=/=G</code></td>
+<td class="text-left">General. Fixed with exponent for</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">large,</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">and small numbers (<code>g</code> default)</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>n</code></td>
+<td class="text-left"><code>g</code> with locale specific</td>
+</tr>
+
+<tr>
+<td class="text-left">&#xa0;</td>
+<td class="text-left">separators</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>%</code></td>
+<td class="text-left">Percentage (multiplies by 100)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> Some <code>format</code> Examples</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Here are a few examples of using <code>.format</code>. Let&rsquo;s format a string in the
+center of 12 characters surrounded by <code>*</code>. <code>*</code> is the <i>fill</i> character,
+<code>^</code> is the <i>align</i> field, and <code>12</code> is the <i>width</i> field:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; "Name: {:*^12}".format("Ringo")
+'Name: ***Ringo****'
+</pre>
+
+<p>
+Next, we format a percentage using a width of 10, one decimal place and
+the sign before the width padding. <code>=</code> is the <i>align</i> field, <code>10.1</code> are
+the <i>width</i> and <i>precision</i> fields, and <code>%</code> is the <i>float type</i>, which
+converts the number to a percentage:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; "Percent: {:=10.1%}".format(-44/100)
+'Percent: -    44.0%'
+</pre>
+
+<p>
+Below is a binary and a hex conversion. The <i>integer type</i> field is set
+to <code>b</code> and <code>x</code> respectively:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; "Binary: {:#b}".format(12)
+'Binary: 0b1100'
+
+&gt;&gt;&gt; "Hex: {:#x}".format(12)
+'Hex: 0xc'
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Files</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+The <code>open</code> function will take a file path and mode as input and return a
+file handle. There are various modes to open a file, depending on the
+content and your needs. If you open the file in binary mode, you will
+get bytes out. In text mode you will get strings back:
+</p>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Writing Files</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+We use a context manager with a file to ensure that the file is closed
+when the context block exits.
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; with open('/tmp/names.txt', 'w') as fout:
+...     fout.write('Paul\r\nJohn\n')
+...     fout.writelines(['Ringo\n', 'George\n'])
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Reading Files</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+With an opened text file, you can iterate over the lines. This saves
+memory as the lines are read in as needed:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; with open('/tmp/names.txt') as fin:
+...     for line in fin:
+...         print(repr(line))
+'Paul\n'
+'John\n'
+'Ringo\n'
+'George\n'
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Functions</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Defining functions</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Functions may take input, do some processing, and return output. You can
+provide a docstring directly following the name and parameters of the
+function:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add_numbers(x, y):
+...     """ add_numbers sums up x and y
+...
+...     Arguments:
+...     x -- object that supports addition
+...     y -- object that supports addition
+...     """
+...     return x + y
+</pre>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+We use whitespace to specify a block in Python. We typically indent
+following a colon. PEP 8 recommends using 4 spaces. Don&rsquo;t mix tabs and
+spaces.
+</p>
+</blockquote>
+
+<p>
+We can create anonymous functions using the <code>lambda</code> statement. Because
+they only allow an expression following the colon, it is somewhat
+crippled in functionality. They are commonly used as a <code>key</code> argument to
+<code>sorted</code>, <code>min</code>, or <code>max</code>:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; add = lambda x, y: x + y
+&gt;&gt;&gt; add(4, 5)
+9
+</pre>
+
+<p>
+Functions can have <i>default</i> arguments. Be careful with mutable types
+here, as the default is bound to the function when the function is
+created, not when it is called:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add_n(x, n=42):
+...     return x + n
+
+&gt;&gt;&gt; add_n(10)
+52
+&gt;&gt;&gt; add_n(3, -10)
+-7
+</pre>
+
+<p>
+Functions can support variable positional arguments:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add_many(*args):
+...     result = 0
+...     for arg in args:
+...          result += arg
+...     return result
+
+&gt;&gt;&gt; add_many()
+0
+&gt;&gt;&gt; add_many(1)
+1
+&gt;&gt;&gt; add_many(42, 3.14)
+45.14
+</pre>
+
+<p>
+Functions can support variable keyword arguments:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add_kwargs(**kwargs):
+...     result = 0
+...     for key in kwargs:
+...         result += kwargs[key]
+...     return result
+
+&gt;&gt;&gt; add_kwargs(x=1, y=2, z=3)
+6
+
+&gt;&gt;&gt; add_kwargs()
+0
+
+&gt;&gt;&gt; add_kwargs(4)
+Traceback (most recent call last):
+  ...
+TypeError: add_kwargs() takes 0 positional arguments
+but 1 was given
+</pre>
+
+<p>
+You can indicate the end of positional parameters by using a single <code>*</code>.
+This gives you keyword only parameters (PEP 3102):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add_points(*, x1=0, y1=0, x2=0, y2=0):
+...     return x1 + x2, y1 + y2
+
+&gt;&gt;&gt; add_points(x1=1, y1=1, x2=3, y2=4)
+(4, 5)
+
+&gt;&gt;&gt; add_points(1, 1, 3, 4)
+Traceback (most recent call last):
+  ...
+TypeError: add_points() takes 0 positional arguments
+but 4 were given
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Calling Functions</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+You can also use <code>*</code> and <code>**</code> to <i>unpack</i> sequence and dictionary
+arguments:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add_all(*args, **kwargs):
+...     """Add all arguments"""
+...     result = 0
+...     for num in args + tuple(kwargs.values()):
+...         result += num
+...     return result
+
+&gt;&gt;&gt; sizes = (2, 4.5)
+&gt;&gt;&gt; named_sizes = {"this": 3, "that": 1}
+</pre>
+
+<p>
+The following two examples are the equivalent:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; add_all(*sizes)
+6.5
+
+&gt;&gt;&gt; add_all(sizes[0], sizes[1])
+6.5
+</pre>
+
+<p>
+The following two examples are the equivalent:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; add_all(**named_sizes)
+4
+
+&gt;&gt;&gt; add_all(this=3, that=1)
+4
+</pre>
+
+<p>
+You can also combine <code>*</code> and <code>**</code> on invocation:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; add_all(*sizes, **named_sizes)
+10.5
+</pre>
+
+<p>
+You can get help on a function that has a docstring by using <code>help</code>:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; help(add_all)
+Help on function add_all in module __main__:
+
+add_all(*args, **kwargs)
+    Add all arguments
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Classes</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Python supports object oriented programming but doesn&rsquo;t require you to
+create classes. You can use the built-in data structures to great
+effect. Here&rsquo;s a class for a simple bike. The class attribute,
+<code>num_passengers</code>, is shared for all instances of <code>Bike</code>. The instance
+attributes, <code>size</code> and <code>ratio</code>, are unique to each instance:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; class Bike:
+...     ''' Represents a bike '''
+...     num_passengers = 1   # class attribute
+...
+...     def __init__(self, wheel_size,
+...                  gear_ratio):
+...         ''' Create a bike specifying the
+...         wheel size, and gear ratio '''
+...         # instance attributes
+...         self.size = wheel_size
+...         self.ratio = gear_ratio
+...
+...     def gear_inches(self):
+...         return self.ratio * self.size
+</pre>
+
+<p>
+We can call the constructor (<code>__init__</code>), by invoking the class name.
+Note that <code>self</code> is the instance, but Python passes that around for us
+automatically:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; bike = Bike(26, 34/13)
+&gt;&gt;&gt; print(bike.gear_inches())
+68.0
+</pre>
+
+<p>
+We can access both class attributes and instance attributes on the
+instance:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; bike.num_passengers
+1
+
+&gt;&gt;&gt; bike.size
+26
+</pre>
+
+<p>
+If an attribute is not found on the instance, Python will then look for
+it on the class, it will look through the parent classes to continue to
+try and find it. If the lookup is unsuccessful, an <code>AttributeError</code> is
+raised.
+</p>
+</div>
+
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> Subclasses</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+To subclass a class, simply place the parent class name in parentheses
+following the class name in the declaration. We can call the <code>super</code>
+function to gain access to parent methods:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; class Tandem(Bike):
+...     num_passengers = 2
+...
+...     def __init__(self, wheel_size, rings, cogs):
+...         self.rings = rings
+...         self.cogs = cogs
+...         ratio = rings[0] / cogs[0]
+...         super().__init__(wheel_size, ratio)
+...
+...     def shift(self, ring_idx, cog_idx):
+...         self.ratio = self.rings[ring_idx] \
+...              / self.cogs[cog_idx]
+...
+</pre>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+In the above example, we used a <code>\</code> to indicate that the line
+continued on the following line. This is usually required unless there
+is an implicit line continuation with an opening brace that hasn&rsquo;t
+been closed (<code>(</code>, <code>[</code>, or <code>{</code>).
+</p>
+</blockquote>
+
+<p>
+The instance of the subclass can call methods that are defined on its
+class or the parent class:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; tan = Tandem(26, [42, 36], [24, 20, 15, 11])
+&gt;&gt;&gt; tan.shift(1, -1)
+&gt;&gt;&gt; tan.gear_inches()
+85.0909090909091
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Class Methods and Static Methods</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+The <code>classmethod</code> decorator is used to create methods that you can
+invoke directly on the class. This allows us to create alternate
+constructors. Note that the implicit first argument is the class,
+commonly named <code>cls</code> (as <code>class</code> is a keyword and will error out):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; INCHES_PER_METER = 39.37
+
+&gt;&gt;&gt; class MountainBike(Bike):
+...     @classmethod
+...     def from_metric(cls, size_meters, ratio):
+...          return cls(size_meters *
+...                     INCHES_PER_METER,
+...                     ratio)
+
+
+&gt;&gt;&gt; mtn = MountainBike.from_metric(.559, 38/11)
+&gt;&gt;&gt; mtn.gear_inches()
+76.0270490909091
+</pre>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+In the above example, we had an implicit line continuation without a
+backslash, because there was a <code>(</code> on the line.
+</p>
+</blockquote>
+
+<p>
+The <code>staticmethod</code> decorator lets you attach functions to a class. (I
+don&rsquo;t like them, just use a function). Note that they don&rsquo;t get an
+implicit first argument. It can be called on the instance or the class:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; class Recumbent(Bike):
+...     @staticmethod
+...     def is_fast():
+...         return True
+
+&gt;&gt;&gt; Recumbent.is_fast()
+True
+
+&gt;&gt;&gt; lawnchair = Recumbent(20, 4)
+&gt;&gt;&gt; lawnchair.is_fast()
+True
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> Properties</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+If you want to have actions occur under the covers on attribute access,
+you can use properties to do that:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; class Person:
+...     def __init__(self, name):
+...         self._name = name
+...
+...     @property
+...     def name(self):
+...         if self._name == 'Richard':
+...             return 'Ringo'
+...         return self._name
+...
+...     @name.setter
+...     def name(self, value):
+...         self._name = value
+...
+...     @name.deleter
+...     def name(self):
+...         del self._name
+</pre>
+
+<p>
+Rather than calling the <code>.name()</code> method, we access the attribute:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; p = Person('Richard')
+&gt;&gt;&gt; p.name
+'Ringo'
+
+&gt;&gt;&gt; p.name = 'Fred'
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Looping</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+You can loop over objects in a sequence:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; names = ['John', 'Paul', 'Ringo']
+&gt;&gt;&gt; for name in names:
+...    print(name)
+John
+Paul
+Ringo
+</pre>
+
+<p>
+The <code>break</code> statement will pop you out of a loop:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; for name in names:
+...    if name == 'Paul':
+...        break
+...    print(name)
+John
+</pre>
+
+<p>
+The <code>continue</code> statement skips over the body of the loop and <i>continues</i>
+at the next item of iteration:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; for name in names:
+...    if name == 'Paul':
+...        continue
+...    print(name)
+John
+Ringo
+</pre>
+
+<p>
+You can use the <code>else</code> statement to indicate that every item was looped
+over, and a <code>break</code> was never encountered:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; for name in names:
+...     if name == 'George':
+...          break
+... else:
+...     raise ValueError("No Georges")
+Traceback (most recent call last):
+  ...
+ValueError: No Georges
+</pre>
+
+<p>
+Don&rsquo;t loop over index values (<code>range(len(names))</code>). Use <code>enumerate</code>:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; for i, name in enumerate(names, 1):
+...     print("{}. {}".format(i, name))
+1. John
+2. Paul
+3. Ringo
+</pre>
+</div>
+
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> <code>while</code> Loops</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+You can use <code>while</code> loops to create loops as well. If it is an infinite
+loop, you can break out of it:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; done = False
+&gt;&gt;&gt; while not done:
+...     # some work
+...     done = True
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> Iteration Protocol</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+To make an iterator implement <code>__iter__</code> and <code>__next__</code>:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; class fib:
+...     def __init__(self, limit=None):
+...         self.val1 = 1
+...         self.val2 = 1
+...         self.limit = limit
+...
+...     def __iter__(self):
+...         return self
+...
+...     def __next__(self):
+...         val = self.val1
+...         self.val1 = self.val2
+...         self.val2 = val + self.val1
+...         if self.limit is not None and \
+...             val &lt; self.limit:
+...             return val
+...         raise StopIteration
+</pre>
+
+<p>
+Use the iterator in a loop:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; e = fib(6)
+&gt;&gt;&gt; for val in e:
+...    print(val)
+1
+1
+2
+3
+5
+</pre>
+
+<p>
+Unrolling the protocol:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; e = fib(6)
+&gt;&gt;&gt; it = iter(e)  # calls e.__iter__()
+&gt;&gt;&gt; next(it)      # calls it.__next__()
+1
+&gt;&gt;&gt; next(it)
+1
+&gt;&gt;&gt; next(it)
+2
+&gt;&gt;&gt; next(it)
+3
+&gt;&gt;&gt; next(it)
+5
+&gt;&gt;&gt; next(it)
+Traceback (most recent call last):
+  ...
+StopIteration
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Conditionals</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Python has an <code>if</code> statement with zero or more <code>elif</code> statements, and an
+optional <code>else</code> statement at the end. In Python, the word <code>elif</code> is
+Dutch for <i>else if</i>:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; grade = 72
+
+&gt;&gt;&gt; def letter_grade(grade):
+...     if grade &gt; 90:
+...         return 'A'
+...     elif grade &gt; 80:
+...         return 'B'
+...     elif grade &gt; 70:
+...         return 'C'
+...     else:
+...         return 'D'
+
+&gt;&gt;&gt; letter_grade(grade)
+'C'
+</pre>
+
+<p>
+Python supports the following tests: <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, and
+<code>!=</code>. For boolean operators use <code>and</code>, <code>or</code>, and <code>not</code> (<code>&amp;</code>, <code>|</code>, and
+<code>^</code> are the bitwise operators).
+</p>
+
+<p>
+Note that Python also supports <i>range comparisons</i>:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; x = 4
+&gt;&gt;&gt; if 3 &lt; x &lt; 5:
+...     print("Four!")
+Four!
+</pre>
+
+<p>
+Python does not have a switch statement, often dictionaries are used to
+support a similar construct:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add(x, y):
+...     return x + y
+
+&gt;&gt;&gt; def sub(x, y):
+...     return x - y
+
+&gt;&gt;&gt; ops = {'+': add, '-': sub}
+
+&gt;&gt;&gt; op = '+'
+&gt;&gt;&gt; a = 2
+&gt;&gt;&gt; b = 3
+&gt;&gt;&gt; ops[op](a, b)
+5
+</pre>
+</div>
+
+<div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1"><span class="section-number-3">12.1</span> Truthiness</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+You can define the <code>__bool__</code> method to teach your classes how to act in
+a boolean context. If that doesn&rsquo;t exists, Python will use <code>__len__</code>,
+and finally default to <code>True</code>.
+</p>
+
+<p>
+The following table lists <i>truthy</i> and <i>falsey</i> values:
+</p>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="text-left">Truthy</th>
+<th scope="col" class="text-left">Falsey</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-left"><code>True</code></td>
+<td class="text-left"><code>False</code></td>
+</tr>
+
+<tr>
+<td class="text-left">Most objects</td>
+<td class="text-left"><code>None</code></td>
+</tr>
+
+<tr>
+<td class="text-left"><code>1</code></td>
+<td class="text-left"><code>0</code></td>
+</tr>
+
+<tr>
+<td class="text-left"><code>3.2</code></td>
+<td class="text-left"><code>0.0</code></td>
+</tr>
+
+<tr>
+<td class="text-left"><code>[1, 2]</code></td>
+<td class="text-left"><code>[]</code> (empty list)</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>{'a': 1, 'b': 2}</code></td>
+<td class="text-left"><code>{}</code> (empty dict)</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>'string'</code></td>
+<td class="text-left"><code>""</code> (empty string)</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>'False'</code></td>
+<td class="text-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="text-left"><code>'0'</code></td>
+<td class="text-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> Exceptions</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+Python can catch one or more exceptions (PEP 3110). You can provide a
+chain of different exceptions to catch if you want to react differently.
+A few hints:
+</p>
+
+<ul class="org-ul">
+<li>Try to keep the block of the <code>try</code> statement down to the code that
+throws exceptions
+</li>
+<li>Be specific about the exceptions that you catch
+</li>
+<li>If you want to inspect the exception, use <code>as</code> to create a variable
+to point to it
+</li>
+</ul>
+
+<p>
+If you use a bare <code>raise</code> inside of an <code>except</code> block, Python&rsquo;s
+traceback will point back to the location of the original exception,
+rather than where it is raised from.
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def avg(seq):
+...     try:
+...         result = sum(seq) / len(seq)
+...     except ZeroDivisionError as e:
+...         return None
+...     except Exception:
+...         raise
+...     return result
+
+
+&gt;&gt;&gt; avg([1, 2, 4])
+2.3333333333333335
+
+&gt;&gt;&gt; avg([]) is None
+True
+
+&gt;&gt;&gt; avg('matt')
+Traceback (most recent call last):
+  ...
+TypeError: unsupported operand type(s) for +: 'int'
+and 'str'
+</pre>
+</div>
+
+<div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1"><span class="section-number-3">13.1</span> Raising Exceptions</h3>
+<div class="outline-text-3" id="text-13-1">
+<p>
+You can raise an exception using the <code>raise</code> statement (PEP 3109):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def bad_code(x):
+...     raise ValueError('Bad code')
+
+&gt;&gt;&gt; bad_code(1)
+Traceback (most recent call last):
+  ...
+ValueError: Bad code
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Decorators</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+A decorator (PEP 318) allows us to insert logic before and after a
+function is called. You can define a decorator with a function that
+takes a function as input and returns a function as output. Here is the
+identity decorator:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def identity(func):
+...     return func
+</pre>
+
+<p>
+We can decorate a function with it like this:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; @identity
+... def add(x, y):
+...     return x + y
+</pre>
+
+<p>
+A more useful decorator can inject logic before and after calling the
+original function. To do this we create a function inside of the
+function and return that:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; import functools
+&gt;&gt;&gt; def verbose(func):
+...     @functools.wraps(func)
+...     def inner(*args, **kwargs):
+...         print("Calling with:{} {}".format(args,
+...               kwargs))
+...         res = func(*args, **kwargs)
+...         print("Result:{}".format(res))
+...         return res
+...     return inner
+</pre>
+
+<p>
+Above, we use print functions to illustrate before/after behavior,
+otherwise this is very similar to identity decorator.
+</p>
+
+<p>
+There is a special syntax for applying the decorator. We put <code>@</code> before
+the decorator name and place that on a line directly above the function
+we wish to decorate. Using the <code>@verbose</code> line before a function
+declaration is syntactic sugar for re-assigning the variable pointing to
+the function to the result of calling the decorator with the function
+passed into it:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; @verbose
+... def sub(x, y):
+...     return x - y
+</pre>
+
+<p>
+This could also be written as, <code>sub = verbose(sub)</code>. Note that our
+decorated function will still call our original function, but add in
+some <code>print</code> statements:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; sub(5, 4)
+Calling with:(5, 4) {}
+Result:1
+1
+</pre>
+</div>
+
+<div id="outline-container-sec-14-1" class="outline-3">
+<h3 id="sec-14-1"><span class="section-number-3">14.1</span> Parameterized Decorators</h3>
+<div class="outline-text-3" id="text-14-1">
+<p>
+Because we can use closures to create functions, we can use closures to
+create decorators as well. This is very similar to our decorator above,
+but now we make a function that will return a decorator. Based on the
+inputs to that function, we can control (or parameterize) the behavior
+of the decorator:
+</p>
+
+<p>
+\clearpage
+</p>
+<pre class="example">
+&gt;&gt;&gt; def verbose_level(level):
+...     def verbose(func):
+...         @functools.wraps(func)
+...         def inner(*args, **kwargs):
+...             for i in range(level):  # parameterized!
+...                 print("Calling with:{} {}".format(
+...                       args, kwargs))
+...             res = func(*args, **kwargs)
+...             print("Result:{}".format(res))
+...             return res
+...         return inner
+...     return verbose
+</pre>
+
+<p>
+When you decorate with parameterized decorators, the decoration looks
+differently, because we need to invoke the function to create a
+decorator:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; @verbose_level(2)
+... def div(x, y):
+...     return x/y
+
+&gt;&gt;&gt; div(1, 5)
+Calling with:(1, 5) {}
+Calling with:(1, 5) {}
+Result:0.2
+0.2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Class Decorators and Metaclasses</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+Python allows you to dynamically create and modify classes. Class
+decorators and metaclasses are two ways to do this.
+</p>
+</div>
+
+<div id="outline-container-sec-15-1" class="outline-3">
+<h3 id="sec-15-1"><span class="section-number-3">15.1</span> Class Decorators</h3>
+<div class="outline-text-3" id="text-15-1">
+<p>
+You can decorate a class definition with a <i>class decorator</i> (PEP 3129).
+It is a function that takes a class as input and returns a class.
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add_chirp(cls):
+...     'Class decorator to add speak method'
+...     def chirp(self):
+...         return "CHIRP"
+...     cls.speak = chirp
+...     return cls
+...
+&gt;&gt;&gt; @add_chirp
+... class Bird:
+...     pass
+
+&gt;&gt;&gt; b = Bird()
+&gt;&gt;&gt; print(b.speak())
+CHIRP
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-15-2" class="outline-3">
+<h3 id="sec-15-2"><span class="section-number-3">15.2</span> Creating Classes with <code>type</code></h3>
+<div class="outline-text-3" id="text-15-2">
+<p>
+You can use <code>type</code> to determine the type of an object, but you can also
+provide the name, parents, and attributes map, and it will return a
+class.
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def howl(self):
+...     return "HOWL"
+
+&gt;&gt;&gt; parents = ()
+&gt;&gt;&gt; attrs_map = {'speak': howl}
+&gt;&gt;&gt; F = type('F', parents, attrs_map)
+
+&gt;&gt;&gt; f = F()
+&gt;&gt;&gt; print(f.speak())
+HOWL
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-15-3" class="outline-3">
+<h3 id="sec-15-3"><span class="section-number-3">15.3</span> Metaclasses with Functions</h3>
+<div class="outline-text-3" id="text-15-3">
+<p>
+In the class definition you can specify a metaclass (PEP 3115), which
+can be a function or a class. Here is an example of a function that can
+alter the class.
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def meta(name, parents, attrs_map):
+...     def bark(self):
+...         return "WOOF!"
+...     attrs_map['speak'] = bark
+...     return type(name, parents, attrs_map)
+
+&gt;&gt;&gt; class Dog(metaclass=meta):
+...     pass
+
+&gt;&gt;&gt; d = Dog()
+&gt;&gt;&gt; print(d.speak())
+WOOF!
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-15-4" class="outline-3">
+<h3 id="sec-15-4"><span class="section-number-3">15.4</span> Metaclasses with Classes</h3>
+<div class="outline-text-3" id="text-15-4">
+<p>
+You can define a class decorator and use either <code>__new__</code> or <code>__init__</code>.
+Typically most use <code>__new__</code> as it can alter attributes like
+<code>__slots__</code>.
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; class CatMeta(type): # Needs to subclass type
+...     def __new__(cls, name, parents, attrs_map):
+...         # cls is CatMeta
+...         # res is the class we are creating
+...         res = super().__new__(cls, name,
+...             parents, attrs_map)
+...         def meow(self):
+...             return "MEOW"
+...         res.speak = meow
+...         return res
+...
+...     def __init__(cls, name, parents, attrs_map):
+...         super().__init__(name, parents, attrs_map)
+
+&gt;&gt;&gt; class Cat(metaclass=CatMeta):
+...     pass
+
+&gt;&gt;&gt; c = Cat()
+&gt;&gt;&gt; print(c.speak())
+MEOW
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> Generators</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+Generators (PEP 255) are functions that suspend their state as you
+iterate over the results of them. Each <code>yield</code> statement returns the
+next item of iteration and then <i>freezes</i> the state of the function.
+When iteration is resumed, the function continues from the point it was
+frozen. Note, that the result of calling the function is a generator:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def fib_gen():
+...     val1, val2 = 1, 1
+...     while 1:
+...         yield val1
+...         val1, val2 = val2, (val1+val2)
+</pre>
+
+<p>
+We can simulate iteration by using the iteration protocol:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; gen = fib_gen()
+&gt;&gt;&gt; gen_iter = iter(gen)
+&gt;&gt;&gt; next(gen_iter)
+1
+&gt;&gt;&gt; next(gen_iter)
+1
+&gt;&gt;&gt; next(gen_iter)
+2
+&gt;&gt;&gt; next(gen_iter)
+3
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> Coroutines</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+The <code>asyncio</code> library (PEP 3153) provides asynchronous I/O in Python 3.
+We use <code>async def</code> to define a <i>coroutine function</i> (see PEP 492). The
+result of calling this is a <i>coroutine object</i>. Inside a coroutine we
+can use <code>var = await future</code> to suspend the coroutine and wait for
+<code>future</code> to return. We can also await another coroutine. A coroutine
+object may be created but isn&rsquo;t run until an event loop is running:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; import asyncio
+&gt;&gt;&gt; async def greeting():
+...    print("Here they are!")
+
+&gt;&gt;&gt; co = greeting()
+&gt;&gt;&gt; co  # Not running
+&lt;coroutine object greeting at 0x1087dcba0&gt;
+
+&gt;&gt;&gt; loop = asyncio.get_event_loop()
+&gt;&gt;&gt; loop.run_until_complete(co)
+Here they are!
+&gt;&gt;&gt; loop.close()
+</pre>
+
+<p>
+\clearpage
+To return an object, use an <code>asyncio.Future</code>:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; async def compute(future):
+...     print("Starting...")
+...     # Simulate IO...
+...     res = await answer()
+...     future.set_result(res)
+
+
+&gt;&gt;&gt; async def answer():
+...     await asyncio.sleep(1)
+...     return 42
+
+&gt;&gt;&gt; f = asyncio.Future()
+&gt;&gt;&gt; loop = asyncio.get_event_loop()
+&gt;&gt;&gt; loop.run_until_complete(compute(f))
+&gt;&gt;&gt; loop.close()
+&gt;&gt;&gt; f.result()
+42
+</pre>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+<code>await</code> and <code>async</code> are <i>soft keywords</i> in Python 3.6. You will get a
+warning if you use them for variable names. In Python 3.7, they will
+be reserved keywords.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+For backwards compatibility in Python 3.4:
+</p>
+
+<ul class="org-ul">
+<li><code>await</code> can be replaced with <code>yield from</code>
+</li>
+<li><code>async def</code> can be replaced with a function decorated with
+<code>@asyncio.coroutine</code>
+</li>
+</ul>
+</blockquote>
+</div>
+
+<div id="outline-container-sec-17-1" class="outline-3">
+<h3 id="sec-17-1"><span class="section-number-3">17.1</span> Asynchronous Generators</h3>
+<div class="outline-text-3" id="text-17-1">
+<p>
+Python 3.6 adds asynchronous generators (PEP 525). You can use the
+<code>yield</code> statement in an <code>async def</code> function:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; async def fib():
+...     v1, v2 = 1, 1
+...     while True:
+...          # similate io
+...          await asyncio.sleep(1)
+...          yield v1
+...          v1, v2 = v2, v1+v2
+...          if v1 &gt; 5:
+...              break
+
+&gt;&gt;&gt; async def get_results():
+...    async for num in fib():
+...        print(num)
+
+&gt;&gt;&gt; loop = asyncio.get_event_loop()
+&gt;&gt;&gt; loop.run_until_complete(get_results())
+1  # sleeps for 1 sec before each print
+1
+2
+3
+5
+&gt;&gt;&gt; loop.close()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18"><span class="section-number-2">18</span> Comprehensions</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+Comprehension constructs allow us to combine the functional ideas behind
+map and filter into an easy to read, single line of code. When you see
+code that is aggregating into a list (or dict, set, or generator), you
+can replace it with a list comprehension (or dict, set comprehension, or
+generator expression). Here is an example of the code smell:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; nums = range(10)
+&gt;&gt;&gt; result = []
+&gt;&gt;&gt; for num in nums:
+...     if num % 2 == 0:  # filter
+...         result.append(num*num)  # map
+</pre>
+
+<p>
+This can be specified with a list comprehension (PEP 202):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; result = [num*num for num in nums
+...           if num % 2 == 0]
+</pre>
+
+<p>
+To construct a list comprehension:
+</p>
+
+<ul class="org-ul">
+<li>Assign the result (<code>result</code>) to brackets. The brackets signal to the
+reader of the code that a list will be returned:
+
+<pre class="example">
+result = [ ]
+</pre>
+</li>
+
+<li>Place the <i>for</i> loop construct inside the brackets. No colons are
+necessary:
+
+<pre class="example">
+result = [for num in nums]
+</pre>
+</li>
+
+<li>Insert any operations that filter the accumulation after the for
+loop:
+
+<pre class="example">
+result = [for num in nums if num % 2 == 0]
+</pre>
+</li>
+
+<li>Insert the accumulated object (<code>num*num</code>) at the front directly
+following the left bracket. Insert parentheses around the object if
+it is a tuple:
+
+<pre class="example">
+result = [num*num for num in nums
+          if num % 2 == 0]
+</pre>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-18-1" class="outline-3">
+<h3 id="sec-18-1"><span class="section-number-3">18.1</span> Set Comprehensions</h3>
+<div class="outline-text-3" id="text-18-1">
+<p>
+If you replace the <code>[</code> with <code>{</code>, you will get a set comprehension (PEP
+</p>
+<ol class="org-ol">
+<li>instead of a list comprehension:
+</li>
+</ol>
+
+<pre class="example">
+&gt;&gt;&gt; {num*num for num in nums if num % 2 == 0}
+{0, 64, 4, 36, 16}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-18-2" class="outline-3">
+<h3 id="sec-18-2"><span class="section-number-3">18.2</span> Dict Comprehensions</h3>
+<div class="outline-text-3" id="text-18-2">
+<p>
+If you replace the <code>[</code> with <code>{</code>, and separate the key and value with a
+colon, you will get a dictionary comprehension (PEP 274):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; {num:num*num for num in nums if num % 2 == 0}
+{0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+</pre>
+
+<blockquote>
+<p>
+<b>note</b>
+</p>
+
+<p>
+In Python 3.6, dictionaries are now ordered by key entry. Hence the
+ordering above.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-sec-18-3" class="outline-3">
+<h3 id="sec-18-3"><span class="section-number-3">18.3</span> Generator Expressions</h3>
+<div class="outline-text-3" id="text-18-3">
+<p>
+If you replace the <code>[</code> with <code>(</code>, you will get a generator instead of a
+list. This is called a <i>generator expression</i> (PEP 289):
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; (num*num for num in nums if num % 2 == 0)
+&lt;generator object &lt;genexpr&gt; at 0x10a6f8780&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-18-4" class="outline-3">
+<h3 id="sec-18-4"><span class="section-number-3">18.4</span> Asynchronous Comprehensions</h3>
+<div class="outline-text-3" id="text-18-4">
+<p>
+Python 3.6 (PEP 530) gives us <i>asynchronous comprehensions</i>. You can add
+<code>async</code> following what you are collecting to make it asynchronous. If
+you had the following code:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; async def process(aiter):
+...     result = []
+...     async for num in aiter:
+...         if num % 2 == 0:  # filter
+...             result.append(num*num)  # map
+</pre>
+
+<p>
+You could replace it with:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; async def process(aiter):
+...     result = [num*num async for num in aiter
+...               if num % 2 == 0]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19"><span class="section-number-2">19</span> Context Managers</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+If you find code where you need to make sure something happens before
+<i>and</i> after a block, a context manager (PEP 343) is a convenient way to
+enforce that. Another code smell that indicates you could be using a
+context manager is a <code>try=/=finally</code> block.
+</p>
+
+<p>
+Context managers can be created with functions or classes.
+</p>
+
+<p>
+If we were writing a Python module to write TeX, we might do something
+like this to ensure that the environments are closed properly:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def start(env):
+...     return '\\begin{{{}}}'.format(env)
+
+&gt;&gt;&gt; def end(env):
+...      return '\\end{{{}}}'.format(env)
+
+&gt;&gt;&gt; def may_error():
+...     import random
+...     if random.random() &lt; .5:
+...         return 'content'
+...     raise ValueError('Problem')
+
+
+&gt;&gt;&gt; out = []
+&gt;&gt;&gt; out.append(start('center'))
+
+&gt;&gt;&gt; try:
+...     out.append(may_error())
+... except ValueError:
+...     pass
+... finally:
+...     out.append(end('center'))
+</pre>
+
+<p>
+This code can use a context manager to be a little cleaner.
+</p>
+</div>
+
+<div id="outline-container-sec-19-1" class="outline-3">
+<h3 id="sec-19-1"><span class="section-number-3">19.1</span> Function Based Context Managers</h3>
+<div class="outline-text-3" id="text-19-1">
+<p>
+To create a context manager with a function, decorate with
+<code>contextlib.contextmanager</code>, and yield where you want to insert your
+block:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; import contextlib
+&gt;&gt;&gt; @contextlib.contextmanager
+... def env(name, content):
+...     content.append('\\begin{{{}}}'.format(name))
+...     try:
+...         yield
+...     except ValueError:
+...         pass
+...     finally:
+...         content.append('\\end{{{}}}'.format(name))
+</pre>
+
+<p>
+Our code looks better now, and there will always be a closing tag:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; out = []
+&gt;&gt;&gt; with env('center', out):
+...     out.append(may_error())
+
+&gt;&gt;&gt; out
+['\\begin{center}', 'content', '\\end{center}']
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-19-2" class="outline-3">
+<h3 id="sec-19-2"><span class="section-number-3">19.2</span> Class Based Context Managers</h3>
+<div class="outline-text-3" id="text-19-2">
+<p>
+To create a class based context manager, implement the <code>__enter__</code> and
+<code>__exit__</code> methods:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; class env:
+...     def __init__(self, name, content):
+...         self.name = name
+...         self.content = content
+...
+...     def __enter__(self):
+...         self.content.append('\\begin{{{}}}'.format(
+...             self.name))
+...
+...     def __exit__(self, type, value, tb):
+...         # if error in block, t, v, &amp; tb
+...         # have non None values
+...         # return True to hide exception
+...         self.content.append('\\end{{{}}}'.format(
+...             self.name))
+...         return True
+</pre>
+
+<p>
+The code looks the same as using the function based context manager:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; out = []
+&gt;&gt;&gt; with env('center', out):
+...     out.append(may_error())
+
+&gt;&gt;&gt; out  # may_error had an issue
+['\\begin{center}', '\\end{center}']
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-19-3" class="outline-3">
+<h3 id="sec-19-3"><span class="section-number-3">19.3</span> Context objects</h3>
+<div class="outline-text-3" id="text-19-3">
+<p>
+Some context managers create objects that we can use while inside of the
+context. The <code>open</code> context manager returns a file object:
+</p>
+
+<pre class="example">
+with open('/tmp/test.txt') as fin:
+    # muck around with fin
+</pre>
+
+<p>
+To create an object in a function based context manager, simply <code>yield</code>
+the object. In a class based context manager, return the object in the
+<code>__enter__</code> method.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20"><span class="section-number-2">20</span> Type Annotations</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+Python 3.6 (PEP 483 and 484) allows you to provide types for input and
+output of functions. They can be used to:
+</p>
+
+<ul class="org-ul">
+<li>Allow 3rd party libraries such as mypy  [2] to run static typing
+</li>
+<li>Assist editors with type inference
+</li>
+<li>Aid developers in understanding code
+</li>
+</ul>
+
+<p>
+Types can be expressed as:
+</p>
+
+<blockquote>
+<p>
+
+</p>
+
+<ul class="org-ul">
+<li>Built-in classes
+</li>
+<li>Third party classes
+</li>
+<li>Abstract Base Classes
+</li>
+<li>Types found in the <code>types</code> module
+</li>
+<li>User-defined classes
+</li>
+</ul>
+</blockquote>
+
+<p>
+A basic example:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; def add(x: int, y: int) -&gt; float:
+...     return x + y
+
+&gt;&gt;&gt; add(2, 3)
+5
+</pre>
+
+<p>
+Note that Python does not do type checking, you need to use something
+like mypy:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; add("foo", "bar")
+'foobar'
+</pre>
+
+<p>
+You can also specify the types of variables with a comment:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; from typing import Dict
+&gt;&gt;&gt; ages = {}  # type: Dict[str, int]
+</pre>
+</div>
+
+<div id="outline-container-sec-20-1" class="outline-3">
+<h3 id="sec-20-1"><span class="section-number-3">20.1</span> The <code>typing</code> Module</h3>
+<div class="outline-text-3" id="text-20-1">
+<p>
+This module allows you to provide hints for:
+</p>
+
+<ul class="org-ul">
+<li>Callback functions
+</li>
+<li>Generic containers
+</li>
+<li>The <code>Any</code> type
+</li>
+</ul>
+
+<p>
+To designate a class or function to not type check its annotations, use
+the <code>@typing.no_type_check</code> decorator.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-20-2" class="outline-3">
+<h3 id="sec-20-2"><span class="section-number-3">20.2</span> Type Checking</h3>
+<div class="outline-text-3" id="text-20-2">
+<p>
+Python 3.6 provides no support for type checking. You will need to
+install a tool like <code>mypy</code>:
+</p>
+
+<pre class="example">
+$ pip install mypy
+$ python3 -m mypy script.py
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21"><span class="section-number-2">21</span> Scripts, Packages, and Modules</h2>
+<div class="outline-text-2" id="text-21">
+</div><div id="outline-container-sec-21-1" class="outline-3">
+<h3 id="sec-21-1"><span class="section-number-3">21.1</span> Scripts</h3>
+<div class="outline-text-3" id="text-21-1">
+<p>
+A script is a Python file that you invoke <code>python</code> on. Typically there
+is a line near the bottom that looks like this:
+</p>
+
+<pre class="example">
+if __name__ == '__main__':
+    # execute something
+</pre>
+
+<p>
+This test allows you to change the code path when you execute the code
+versus when you import the code. The <code>__name__</code> attribute of a module is
+set to <code>'__main__'</code> when you execute that module. Otherwise, if you
+import the module, it will be the name of the module (without <code>.py</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-21-2" class="outline-3">
+<h3 id="sec-21-2"><span class="section-number-3">21.2</span> Modules</h3>
+<div class="outline-text-3" id="text-21-2">
+<p>
+Modules are files that end in <code>.py</code>. According to PEP 8, we lowercase
+the module name and don&rsquo;t put underscores between the words in them. Any
+module found in the <code>PYTHONPATH</code> environment variable or the <code>sys.path</code>
+list, can be imported.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-21-3" class="outline-3">
+<h3 id="sec-21-3"><span class="section-number-3">21.3</span> Packages</h3>
+<div class="outline-text-3" id="text-21-3">
+<p>
+A directory that has a file named <code>__init__.py</code> in it is a <i>package</i>. A
+package can have modules in it as well as sub packages. The package
+should be found in <code>PYTHONPATH</code> or <code>sys.path</code> to be imported. An example
+might look like this:
+</p>
+
+<pre class="example">
+packagename/
+  __init__.py
+  module1.py
+  module2.py
+  subpackage/
+    __init__.py
+</pre>
+
+<p>
+The <code>__init__.py</code> module can be empty or can import code from other
+modules in the package to remove nesting in import statements.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-21-4" class="outline-3">
+<h3 id="sec-21-4"><span class="section-number-3">21.4</span> Importing</h3>
+<div class="outline-text-3" id="text-21-4">
+<p>
+You can import a package or a module:
+</p>
+
+<pre class="example">
+import packagename
+import packagename.module1
+</pre>
+
+<p>
+Assume there is a <code>fib</code> function in <code>module1</code>. You have access to
+everything in the namespace of the module you imported:
+</p>
+
+<pre class="example">
+import packagename.module1
+
+packagename.module1.fib()
+</pre>
+
+<p>
+To use this you will need to use the fully qualified name,
+<code>packagename.module1.fib</code>. If you only want to import the <code>fib</code> use the
+<code>from</code> variant:
+</p>
+
+<pre class="example">
+from packagename.module1 import fib
+
+fib()
+</pre>
+
+<p>
+You can also rename imports using <code>as</code>:
+</p>
+
+<pre class="example">
+from packagename.module1 import fib as package_fib
+
+package_fib()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22"><span class="section-number-2">22</span> Environments</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+Python 3 includes the <code>venv</code> module for creating a sandbox for your
+project or a <i>virtual environment</i>.
+</p>
+
+<p>
+To create an environment on Unix systems, run:
+</p>
+
+<pre class="example">
+$ python3 -m venv /path/to/env
+</pre>
+
+<p>
+On Windows, run:
+</p>
+
+<pre class="example">
+c:\&gt;c:\Python36\python -m venv c:\path\to\env
+</pre>
+
+<p>
+To enter or <i>activate</i> the environment on Unix, run:
+</p>
+
+<pre class="example">
+$ source /path/to/env/bin/activate
+</pre>
+
+<p>
+On Windows, run:
+</p>
+
+<pre class="example">
+c:\&gt;c:\path\to\env\Scripts\activate.bat
+</pre>
+
+<p>
+Your prompt should have the name of the active virtual environment in
+parentheses. To <i>deactivate</i> an environment on both platforms, just run
+the following:
+</p>
+
+<pre class="example">
+(env) $ deactivate
+</pre>
+</div>
+
+<div id="outline-container-sec-22-1" class="outline-3">
+<h3 id="sec-22-1"><span class="section-number-3">22.1</span> Installing Packages</h3>
+<div class="outline-text-3" id="text-22-1">
+<p>
+You should now have a <code>pip</code> executable, that will install a package from
+PyPI  [3] into your virtual environment:
+</p>
+
+<pre class="example">
+(env) $ pip install django
+</pre>
+
+<p>
+To uninstall a package run:
+</p>
+
+<pre class="example">
+(env) $ pip uninstall django
+</pre>
+
+<p>
+If you are having issues installing a package, you might want to look
+into alternative Python distributions such as Anaconda  [4] that have
+prepackaged many harder to install packages.
+</p>
+
+<p>
+[1] <a href="http://python.org">http://python.org</a>
+</p>
+
+<p>
+[2] <a href="http://mypy-lang.org/">http://mypy-lang.org/</a>
+</p>
+
+<p>
+[3] <a href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a>
+</p>
+
+<p>
+[4] <a href="https://docs.continuum.io/anaconda/">https://docs.continuum.io/anaconda/</a>
+</p>
+</div>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Introduction</a></li>
+<li><a href="#sec-2">2. Running Python</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Installation</a></li>
+<li><a href="#sec-2-2">2.2. Invoking Python</a></li>
+<li><a href="#sec-2-3">2.3. REPL</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. The Zen of Python</a></li>
+<li><a href="#sec-4">4. Built-in Types</a>
+<ul class="nav">
+<li><a href="#sec-4-1">4.1. Variables</a></li>
+<li><a href="#sec-4-2">4.2. Numbers</a></li>
+<li><a href="#sec-4-3">4.3. Strings</a></li>
+<li><a href="#sec-4-4">4.4. Lists</a></li>
+<li><a href="#sec-4-5">4.5. Dictionaries</a></li>
+<li><a href="#sec-4-6">4.6. Tuples</a></li>
+<li><a href="#sec-4-7">4.7. Sets</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Built in Functions</a></li>
+<li><a href="#sec-6">6. Unicode</a></li>
+<li><a href="#sec-7">7. String Formatting</a>
+<ul class="nav">
+<li><a href="#sec-7-1">7.1. Conversion Flags</a></li>
+<li><a href="#sec-7-2">7.2. Format Specification</a></li>
+<li><a href="#sec-7-3">7.3. Some <code>format</code> Examples</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. Files</a>
+<ul class="nav">
+<li><a href="#sec-8-1">8.1. Writing Files</a></li>
+<li><a href="#sec-8-2">8.2. Reading Files</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Functions</a>
+<ul class="nav">
+<li><a href="#sec-9-1">9.1. Defining functions</a></li>
+<li><a href="#sec-9-2">9.2. Calling Functions</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. Classes</a>
+<ul class="nav">
+<li><a href="#sec-10-1">10.1. Subclasses</a></li>
+<li><a href="#sec-10-2">10.2. Class Methods and Static Methods</a></li>
+<li><a href="#sec-10-3">10.3. Properties</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11. Looping</a>
+<ul class="nav">
+<li><a href="#sec-11-1">11.1. <code>while</code> Loops</a></li>
+<li><a href="#sec-11-2">11.2. Iteration Protocol</a></li>
+</ul>
+</li>
+<li><a href="#sec-12">12. Conditionals</a>
+<ul class="nav">
+<li><a href="#sec-12-1">12.1. Truthiness</a></li>
+</ul>
+</li>
+<li><a href="#sec-13">13. Exceptions</a>
+<ul class="nav">
+<li><a href="#sec-13-1">13.1. Raising Exceptions</a></li>
+</ul>
+</li>
+<li><a href="#sec-14">14. Decorators</a>
+<ul class="nav">
+<li><a href="#sec-14-1">14.1. Parameterized Decorators</a></li>
+</ul>
+</li>
+<li><a href="#sec-15">15. Class Decorators and Metaclasses</a>
+<ul class="nav">
+<li><a href="#sec-15-1">15.1. Class Decorators</a></li>
+<li><a href="#sec-15-2">15.2. Creating Classes with <code>type</code></a></li>
+<li><a href="#sec-15-3">15.3. Metaclasses with Functions</a></li>
+<li><a href="#sec-15-4">15.4. Metaclasses with Classes</a></li>
+</ul>
+</li>
+<li><a href="#sec-16">16. Generators</a></li>
+<li><a href="#sec-17">17. Coroutines</a>
+<ul class="nav">
+<li><a href="#sec-17-1">17.1. Asynchronous Generators</a></li>
+</ul>
+</li>
+<li><a href="#sec-18">18. Comprehensions</a>
+<ul class="nav">
+<li><a href="#sec-18-1">18.1. Set Comprehensions</a></li>
+<li><a href="#sec-18-2">18.2. Dict Comprehensions</a></li>
+<li><a href="#sec-18-3">18.3. Generator Expressions</a></li>
+<li><a href="#sec-18-4">18.4. Asynchronous Comprehensions</a></li>
+</ul>
+</li>
+<li><a href="#sec-19">19. Context Managers</a>
+<ul class="nav">
+<li><a href="#sec-19-1">19.1. Function Based Context Managers</a></li>
+<li><a href="#sec-19-2">19.2. Class Based Context Managers</a></li>
+<li><a href="#sec-19-3">19.3. Context objects</a></li>
+</ul>
+</li>
+<li><a href="#sec-20">20. Type Annotations</a>
+<ul class="nav">
+<li><a href="#sec-20-1">20.1. The <code>typing</code> Module</a></li>
+<li><a href="#sec-20-2">20.2. Type Checking</a></li>
+</ul>
+</li>
+<li><a href="#sec-21">21. Scripts, Packages, and Modules</a>
+<ul class="nav">
+<li><a href="#sec-21-1">21.1. Scripts</a></li>
+<li><a href="#sec-21-2">21.2. Modules</a></li>
+<li><a href="#sec-21-3">21.3. Packages</a></li>
+<li><a href="#sec-21-4">21.4. Importing</a></li>
+</ul>
+</li>
+<li><a href="#sec-22">22. Environments</a>
+<ul class="nav">
+<li><a href="#sec-22-1">22.1. Installing Packages</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+Exported using <div style="display: inline" class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.0.50 (<a href="http://orgmode.org">Org-mode</a> 9.0.5)</div> by Kaushal.Modi.
+</footer>
+</body>
+</html>
