@@ -9,6 +9,7 @@
      #+END_SRC
 3. =C-c C-e h h= (in emacs) to export to HTML.
    - The =ox-twbs= package renders HTML with a really good-looking CSS (Twitter Bootstrap). If you have that installed in emacs, run =C-c C-e w h=.
+   - The exported HTML page can be seen [[https://cdn.rawgit.com/kaushalmodi/Tiny-Python-3.6-Notebook/master/python.html][here]].
 4. I do not have the latex /needspace/ package installed, so the latex converter complained on lines containing =\Needspace=. So I deleted all of those.
    #+BEGIN_SRC shell
    sed -r -i.bkp2 ';/\\[nN]eedspace/d' python.org
